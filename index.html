@@ -3,20 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML to PDF Converter</title>
-    <!-- Include html2pdf.js from a CDN -->
+    <title>HTML File to PDF Converter</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
-    <div id="content">
-        <h1>HTML to PDF Example</h1>
-        <p>This content will be converted to a PDF.</p>
+    <h2>Upload an HTML File and Convert to PDF</h2>
+
+    <!-- File Input -->
+    <input type="file" id="fileInput" accept=".html">
+    <button onclick="loadFile()">Load HTML</button>
+
+    <!-- Container to Display Uploaded Content -->
+    <div id="content" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px;">
+        <p>Uploaded HTML content will appear here...</p>
     </div>
 
-    <button id="download">Download PDF</button>
+    <!-- Convert to PDF Button -->
+    <button id="download" style="margin-top: 10px;">Download as PDF</button>
 
     <script>
+        function loadFile() {
+            const fileInput = document.getElementById("fileInput");
+            const contentDiv = document.getElementById("content");
+
+            if (fileInput.files.length === 0) {
+                alert("Please select an HTML file first.");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                contentDiv.innerHTML = event.target.result; // Load HTML content
+            };
+
+            reader.readAsText(file); // Read file as text
+        }
+
         document.getElementById("download").addEventListener("click", () => {
             const content = document.getElementById("content");
             html2pdf().from(content).save("converted.pdf");
