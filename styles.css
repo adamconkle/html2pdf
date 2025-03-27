@@ -32,7 +32,7 @@ button {
 }
 
 button:hover {
-  filter: brightness(90%)'
+  filter: brightness(90%);
   cursor: pointer;
 }
 
@@ -46,7 +46,7 @@ button#download {
 }
 
 button#download:hover {
-  filter: brightness(90%)'
+  filter: brightness(90%);
   cursor: pointer;
 }
 
