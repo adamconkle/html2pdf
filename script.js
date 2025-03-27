@@ -42,19 +42,24 @@
         }
 
         // Convert to PDF
-        document.getElementById("download").addEventListener("click", () => {
-            const content = document.getElementById("content").textContent; // Get raw text
-            const pdfContainer = document.createElement("pre");
-            pdfContainer.textContent = content; // Ensure it's printed as text
-            document.body.appendChild(pdfContainer);
+    // Convert to PDF
+    document.getElementById("download").addEventListener("click", () => {
+        const content = document.getElementById("content").textContent; // Get raw text or innerHTML if HTML content
+        const pdfContainer = document.createElement("div"); // Create a div instead of pre
+        pdfContainer.textContent = content; // Ensure it's printed as text
+        document.body.appendChild(pdfContainer);
 
-                // Setup options for html2pdf
-            const options = {
-                margin: 10, // Set margins (in mm)
-                jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
-            };
-            
-            html2pdf().from(pdfContainer).save("converted.pdf");
+        // Setup options for html2pdf
+        const options = {
+            margin: 10, // Set margins (in mm)
+            filename: "converted.pdf",
+            image: { type: "jpeg", quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+        };
 
-            setTimeout(() => document.body.removeChild(pdfContainer), 500); // Cleanup
-        });
+        // Generate PDF
+        html2pdf().from(pdfContainer).set(options).save("converted.pdf");
+
+        setTimeout(() => document.body.removeChild(pdfContainer), 500); // Cleanup after PDF generation
+    });
