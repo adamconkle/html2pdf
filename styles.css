@@ -50,6 +50,12 @@ button#download:hover {
   cursor: pointer;
 }
 
+#fileInput {
+  background-color: orange;
+  padding: 15px;
+  border-radius 15px;
+}
+
 #htmlInput {
   width: 90vw;
   background-color: #f1f1f1;
