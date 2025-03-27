@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML to PDF Converter</title>
+</head>
+<body>
+
+    <div id="content">
+        <h1>HTML to PDF Example</h1>
+        <p>This content will be converted to a PDF.</p>
+    </div>
+
+    <button id="download">Download PDF</button>
+
+    <script>
+        document.getElementById("download").addEventListener("click", () => {
+            const content = document.getElementById("content");
+            html2pdf().from(content).save("converted.pdf");
+        });
+    </script>
+
+</body>
+</html>
