@@ -28,11 +28,11 @@ button {
   border: 1px solid dodgerblue;
   border-radius: 5px;
   padding: 10px;
-  transition: opacity 0.3s ease;
+  transition: filter 0.3s ease;
 }
 
 button:hover {
-  opacity: 0.8;
+  filter: brightness(90%)'
   cursor: pointer;
 }
 
@@ -42,11 +42,11 @@ button#download {
   border: 1px solid dodgerblue;
   border-radius: 5px;
   padding: 10px;
-  transition: opacity 0.3s ease;
+  transition: filter 0.3s ease;
 }
 
 button#download:hover {
-  opacity: 0.8;
+  filter: brightness(90%)'
   cursor: pointer;
 
 }
