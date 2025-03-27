@@ -48,5 +48,9 @@ button#download {
 button#download:hover {
   filter: brightness(90%)'
   cursor: pointer;
+}
 
+#htmlInput {
+  width: 90vw;
+  background-color: #1f1f1f;
 }
