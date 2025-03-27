@@ -10,4 +10,8 @@ header {
   height: 100px;
   width: 100vw;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
