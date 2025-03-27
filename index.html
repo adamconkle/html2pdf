@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML to PDF Converter</title>
-    <script src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -20,74 +19,18 @@
 
         <!-- Textarea for Pasting HTML -->
         <h3>Or Paste HTML Below:</h3>
-        <textarea id="htmlInput" rows="6"  placeholder="Paste your HTML code here..."></textarea>
+        <textarea id="htmlInput" rows="6" placeholder="Paste your HTML code here..."></textarea>
         <button onclick="loadPastedHTML()">Load Pasted HTML</button>
+
+        <!-- Convert to PDF -->
+        <button id="download" style="margin-top: 10px;">Download as PDF</button>
 
         <!-- Display Area (Shows raw HTML) -->
         <h3>Preview (Raw HTML):</h3>
-        <!-- Convert to PDF -->
-        <button id="download" style="margin-top: 10px;">Download as PDF</button>
-        <pre id="content" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px; white-space: pre-wrap; word-wrap: break-word;">
+        <div id="content" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px; white-space: pre-wrap; word-wrap: break-word;">
             Uploaded or pasted HTML code will appear here...
-        </pre>
+        </div>
     </div>
-<!--
-    <script>
-        // Function to escape HTML characters
-        function escapeHTML(html) {
-            return html
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
 
-        // Load HTML File as Text
-        function loadFile() {
-            const fileInput = document.getElementById("fileInput");
-            const contentPre = document.getElementById("content");
-
-            if (fileInput.files.length === 0) {
-                alert("Please select an HTML file first.");
-                return;
-            }
-
-            const file = fileInput.files[0];
-            const reader = new FileReader();
-
-            reader.onload = function(event) {
-                contentPre.textContent = event.target.result; // Show raw HTML
-            };
-
-            reader.readAsText(file);
-        }
-
-        // Load Pasted HTML as Text
-        function loadPastedHTML() {
-            const htmlInput = document.getElementById("htmlInput").value;
-            const contentPre = document.getElementById("content");
-
-            if (!htmlInput.trim()) {
-                alert("Please paste valid HTML code.");
-                return;
-            }
-
-            contentPre.textContent = htmlInput; // Show raw HTML
-        }
-
-        // Convert to PDF
-        document.getElementById("download").addEventListener("click", () => {
-            const content = document.getElementById("content").textContent; // Get raw text
-            const pdfContainer = document.createElement("pre");
-            pdfContainer.textContent = content; // Ensure it's printed as text
-            document.body.appendChild(pdfContainer);
-            
-            html2pdf().from(pdfContainer).save("converted.pdf");
-
-            setTimeout(() => document.body.removeChild(pdfContainer), 500); // Cleanup
-        });
-    </script>
--->
 </body>
 </html>
