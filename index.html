@@ -12,23 +12,25 @@
         <h1>HTML to PDF Converter</h1>
     </header>
 
-    <!-- File Upload -->
-    <input type="file" id="fileInput" accept=".html">
-    <button onclick="loadFile()">Load HTML File</button>
+    <container>
+        <!-- File Upload -->
+        <input type="file" id="fileInput" accept=".html">
+        <button onclick="loadFile()">Load HTML File</button>
 
-    <!-- Textarea for Pasting HTML -->
-    <h3>Or Paste HTML Below:</h3>
-    <textarea id="htmlInput" rows="6" cols="50" placeholder="Paste your HTML code here..."></textarea>
-    <button onclick="loadPastedHTML()">Load Pasted HTML</button>
+        <!-- Textarea for Pasting HTML -->
+        <h3>Or Paste HTML Below:</h3>
+        <textarea id="htmlInput" rows="6" cols="50" placeholder="Paste your HTML code here..."></textarea>
+        <button onclick="loadPastedHTML()">Load Pasted HTML</button>
 
-    <!-- Convert to PDF -->
-    <button id="download" style="margin-top: 10px;">Download as PDF</button>
+        <!-- Convert to PDF -->
+        <button id="download" style="margin-top: 10px;">Download as PDF</button>
 
-    <!-- Display Area (Shows raw HTML) -->
-    <h3>Preview (Raw HTML):</h3>
-    <pre id="content" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px; white-space: pre-wrap; word-wrap: break-word;">
-        Uploaded or pasted HTML code will appear here...
-    </pre>
+        <!-- Display Area (Shows raw HTML) -->
+        <h3>Preview (Raw HTML):</h3>
+        <pre id="content" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px; white-space: pre-wrap; word-wrap: break-word;">
+            Uploaded or pasted HTML code will appear here...
+        </pre>
+    </container>
 
     <script>
         // Function to escape HTML characters
