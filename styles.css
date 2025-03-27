@@ -19,6 +19,7 @@ header {
 
 .container {
   width: 90vw;
+  margin: 0 auto;
 }
 
 button {
@@ -33,4 +34,19 @@ button {
 button:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+button#download {
+  background-color: dodgerblue;
+  color: white;
+  border: 1px solid dodgerblue;
+  border-radius: 5px;
+  padding: 10px;
+  transition: opacity 0.3s ease;
+}
+
+button#download:hover {
+  opacity: 0.8;
+  cursor: pointer;
+
 }
