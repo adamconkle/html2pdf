@@ -14,7 +14,7 @@
 
     <div class="container">
         <!-- File Upload -->
-        <h3>Upload File</h3>
+        <h3>Upload File:</h3>
         <input type="file" id="fileInput" accept=".html">
         <button onclick="loadFile()">Load HTML File</button>
 
@@ -24,9 +24,8 @@
         <button onclick="loadPastedHTML()">Load Pasted HTML</button>
 
         <!-- Display Area (Shows raw HTML) -->
-        <h3>Preview (Raw HTML):</h3>
+        <h3>Preview (Raw HTML): <span><button id="download" style="margin-top: 10px;">Download as PDF</button></span></h3>
         <!-- Convert to PDF -->
-        <button id="download" style="margin-top: 10px;">Download as PDF</button>
         <pre id="content" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px; white-space: pre-wrap; word-wrap: break-word;">
             Uploaded or pasted HTML code will appear here...
         </pre>
