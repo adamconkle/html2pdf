@@ -51,10 +51,18 @@ button#download:hover {
   cursor: pointer;
 }
 
-#fileInput {
-  color: orange;
-  padding: 15px;
-  border-radius: 15px;
+.custom-file-upload {
+  background-color: orange; 
+  color: white; 
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  transition: filter 0.3s ease;
+}
+
+.custom-file-upload:hover {
+  filter: brightness(90%);
 }
 
 #htmlInput {
