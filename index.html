@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML to PDF Converter</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -19,14 +20,14 @@
     <textarea id="htmlInput" rows="6" cols="50" placeholder="Paste your HTML code here..."></textarea>
     <button onclick="loadPastedHTML()">Load Pasted HTML</button>
 
-    <!-- Display Area (Now shows raw HTML) -->
+    <!-- Convert to PDF -->
+    <button id="download" style="margin-top: 10px;">Download as PDF</button>
+
+    <!-- Display Area (Shows raw HTML) -->
     <h3>Preview (Raw HTML):</h3>
     <pre id="content" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px; white-space: pre-wrap; word-wrap: break-word;">
         Uploaded or pasted HTML code will appear here...
     </pre>
-
-    <!-- Convert to PDF -->
-    <button id="download" style="margin-top: 10px;">Download as PDF</button>
 
     <script>
         // Function to escape HTML characters
