@@ -19,20 +19,30 @@
     <textarea id="htmlInput" rows="6" cols="50" placeholder="Paste your HTML code here..."></textarea>
     <button onclick="loadPastedHTML()">Load Pasted HTML</button>
 
-    <!-- Display Area -->
-    <h3>Preview:</h3>
-    <div id="content" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px;">
-        <p>Uploaded or pasted HTML content will appear here...</p>
-    </div>
+    <!-- Display Area (Now shows raw HTML) -->
+    <h3>Preview (Raw HTML):</h3>
+    <pre id="content" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px; white-space: pre-wrap; word-wrap: break-word;">
+        Uploaded or pasted HTML code will appear here...
+    </pre>
 
     <!-- Convert to PDF -->
     <button id="download" style="margin-top: 10px;">Download as PDF</button>
 
     <script>
-        // Load HTML File
+        // Function to escape HTML characters
+        function escapeHTML(html) {
+            return html
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // Load HTML File as Text
         function loadFile() {
             const fileInput = document.getElementById("fileInput");
-            const contentDiv = document.getElementById("content");
+            const contentPre = document.getElementById("content");
 
             if (fileInput.files.length === 0) {
                 alert("Please select an HTML file first.");
@@ -43,29 +53,35 @@
             const reader = new FileReader();
 
             reader.onload = function(event) {
-                contentDiv.innerHTML = event.target.result;
+                contentPre.textContent = event.target.result; // Show raw HTML
             };
 
             reader.readAsText(file);
         }
 
-        // Load Pasted HTML
+        // Load Pasted HTML as Text
         function loadPastedHTML() {
             const htmlInput = document.getElementById("htmlInput").value;
-            const contentDiv = document.getElementById("content");
+            const contentPre = document.getElementById("content");
 
             if (!htmlInput.trim()) {
                 alert("Please paste valid HTML code.");
                 return;
             }
 
-            contentDiv.innerHTML = htmlInput;
+            contentPre.textContent = htmlInput; // Show raw HTML
         }
 
         // Convert to PDF
         document.getElementById("download").addEventListener("click", () => {
-            const content = document.getElementById("content");
-            html2pdf().from(content).save("converted.pdf");
+            const content = document.getElementById("content").textContent; // Get raw text
+            const pdfContainer = document.createElement("pre");
+            pdfContainer.textContent = content; // Ensure it's printed as text
+            document.body.appendChild(pdfContainer);
+            
+            html2pdf().from(pdfContainer).save("converted.pdf");
+
+            setTimeout(() => document.body.removeChild(pdfContainer), 500); // Cleanup
         });
     </script>
 
