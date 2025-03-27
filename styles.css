@@ -33,7 +33,7 @@ button {
 }
 
 button:hover {
-  filter: brightness(90%);
+  filter: brightness(80%);
   cursor: pointer;
 }
 
@@ -47,7 +47,7 @@ button#download {
 }
 
 button#download:hover {
-  filter: brightness(90%);
+  filter: brightness(80%);
   cursor: pointer;
 }
 
@@ -62,7 +62,7 @@ button#download:hover {
 }
 
 .custom-file-upload:hover {
-  filter: brightness(90%);
+  filter: brightness(120%);
 }
 
 #htmlInput {
