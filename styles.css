@@ -16,3 +16,7 @@ header {
   align-items: center;
   align-content: center;
 }
+
+container {
+  width: 90vw;
+}
