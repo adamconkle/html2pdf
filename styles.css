@@ -64,6 +64,7 @@ button#download:hover {
 
 .custom-file-upload:hover {
   filter: brightness(120%);
+  background-color: #4a545c;
 }
 
 #htmlInput {
