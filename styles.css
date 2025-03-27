@@ -22,13 +22,15 @@ container {
 }
 
 button {
+  background-color: white;
+  color: dodgerblue;
   border: 1px solid dodgerblue;
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 10px;
   transition: filter 0.3s ease;
-  cursor: pointer;
 }
 
 button:hover {
   filter: brightness(85%);
+  cursor: pointer;
 }
