@@ -47,6 +47,12 @@
             const pdfContainer = document.createElement("pre");
             pdfContainer.textContent = content; // Ensure it's printed as text
             document.body.appendChild(pdfContainer);
+
+                // Setup options for html2pdf
+            const options = {
+                margin: 10, // Set margins (in mm)
+                jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
+            };
             
             html2pdf().from(pdfContainer).save("converted.pdf");
 
