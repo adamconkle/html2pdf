@@ -3,26 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML File to PDF Converter</title>
+    <title>HTML to PDF Converter</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
-    <h2>Upload an HTML File and Convert to PDF</h2>
+    <h2>HTML to PDF Converter</h2>
 
-    <!-- File Input -->
+    <!-- File Upload -->
     <input type="file" id="fileInput" accept=".html">
-    <button onclick="loadFile()">Load HTML</button>
+    <button onclick="loadFile()">Load HTML File</button>
 
-    <!-- Convert to PDF Button -->
-    <button id="download" style="margin-top: 10px;">Download as PDF</button>
+    <!-- Textarea for Pasting HTML -->
+    <h3>Or Paste HTML Below:</h3>
+    <textarea id="htmlInput" rows="6" cols="50" placeholder="Paste your HTML code here..."></textarea>
+    <button onclick="loadPastedHTML()">Load Pasted HTML</button>
 
-    <!-- Container to Display Uploaded Content -->
+    <!-- Display Area -->
+    <h3>Preview:</h3>
     <div id="content" style="border: 1px solid #ccc; padding: 10px; margin-top: 10px;">
-        <p>Uploaded HTML content will appear here...</p>
+        <p>Uploaded or pasted HTML content will appear here...</p>
     </div>
 
+    <!-- Convert to PDF -->
+    <button id="download" style="margin-top: 10px;">Download as PDF</button>
+
     <script>
+        // Load HTML File
         function loadFile() {
             const fileInput = document.getElementById("fileInput");
             const contentDiv = document.getElementById("content");
@@ -36,12 +43,26 @@
             const reader = new FileReader();
 
             reader.onload = function(event) {
-                contentDiv.innerHTML = event.target.result; // Load HTML content
+                contentDiv.innerHTML = event.target.result;
             };
 
-            reader.readAsText(file); // Read file as text
+            reader.readAsText(file);
         }
 
+        // Load Pasted HTML
+        function loadPastedHTML() {
+            const htmlInput = document.getElementById("htmlInput").value;
+            const contentDiv = document.getElementById("content");
+
+            if (!htmlInput.trim()) {
+                alert("Please paste valid HTML code.");
+                return;
+            }
+
+            contentDiv.innerHTML = htmlInput;
+        }
+
+        // Convert to PDF
         document.getElementById("download").addEventListener("click", () => {
             const content = document.getElementById("content");
             html2pdf().from(content).save("converted.pdf");
